@@ -1,0 +1,8 @@
+#!/bin/bash
+
+EXECUTABLE="/home/apeksha/Projects/masters/satellite-pose-estimation-infrared/pose_estimation/train.py"
+
+python3 $EXECUTABLE -m "yolo10" -n 40
+python3 $EXECUTABLE -m "yolo5" -n 40
+python3 $EXECUTABLE -m "yolo7" -n 40
+python3 $EXECUTABLE -m "resnet" -n 40

@@ -1,0 +1,16 @@
+#!/bin/bash
+
+ROOT="/home/apeksha/Projects/masters/satellite-pose-estimation-infrared/"
+CHECKPOINT_PATH="/home/apeksha/Projects/masters/satellite-pose-estimation-infrared/scripts/checkpoints/"
+BINARY_PATH="/home/apeksha/Projects/masters/satellite-pose-estimation-infrared/pose_estimation/inference.py"
+OUTPUTS="$ROOT/outputs/apr7"
+
+yolo10_path="$CHECKPOINT_PATH/apr7/yolo10_2024-4-7_0-48/epoch30_yolo10_2024-4-7_1-18.pth"
+yolo7_path="$CHECKPOINT_PATH/apr7/yolo7_2024-4-7_2-6/epoch30_yolo7_2024-4-7_2-34.pth"
+yolo5_path="$CHECKPOINT_PATH/apr7/yolo5_2024-4-7_1-29/epoch30_yolo5_2024-4-7_1-56.pth"
+resnet_path="$CHECKPOINT_PATH/apr7/resnet_2024-4-7_2-43/epoch30_resnet_2024-4-7_3-53.pth"
+
+python3 $BINARY_PATH -m "resnet" -p "$resnet_path" -o $OUTPUTS
+python3 $BINARY_PATH -m "yolo10" -p "$yolo10_path" -o $OUTPUTS
+python3 $BINARY_PATH -m "yolo7" -p "$yolo7_path" -o $OUTPUTS
+python3 $BINARY_PATH -m "yolo5" -p "$yolo5_path" -o $OUTPUTS
